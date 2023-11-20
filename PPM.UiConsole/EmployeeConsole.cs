@@ -1,9 +1,12 @@
 using System.ComponentModel.Design;
 using System.Diagnostics.Contracts;
+using System.Data.SqlClient;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
+using PPM.Dal;
 using PPM.Domain;
 using PPM.Model;
+using System.Reflection.Metadata;
 
 
 namespace PPM.UiConsole
@@ -12,13 +15,19 @@ namespace PPM.UiConsole
     public class EmployeeConsole
     {
         EmployeeRepo employeeRepo = new EmployeeRepo();
+        RoleConsole roleConsole = new RoleConsole();
+        RoleDal roleDal = new RoleDal();
+        EmployeeDal employeeDal = new EmployeeDal();
+       
+
+
 
 
         public int EmployeeModule()
         {
 
 
-           
+            //  Console.Clear();
             System.Console.WriteLine();
 
             System.Console.ForegroundColor = ConsoleColor.Green;
@@ -69,12 +78,11 @@ namespace PPM.UiConsole
                 int roleId;
 
 
-                if (RolesRepo.rolesList.Count() == 0)
+                if (!roleDal.RolesExist())
                 {
-                    System.Console.WriteLine("There are no roles first add roles ");
+                    System.Console.WriteLine("|==There are no roles in the list.==|");
                     return;
                 }
-
 
                 while (true)
                 {
@@ -82,21 +90,23 @@ namespace PPM.UiConsole
 
                     System.Console.WriteLine();
                     System.Console.Write("Enter the EmployeeId: ");
-               
+
 
                     if (int.TryParse(System.Console.ReadLine(), out int enteredEmployeeId))
                     {
-                        bool employeeExist = EmployeeRepo.employeeList.Any(p => p.EmployeeId == enteredEmployeeId);
-                        if (employeeExist)
+                        bool empExist = employeeDal.EmployeeDalExist(enteredEmployeeId);
+
+                        if (!empExist)
                         {
+                            System.Console.WriteLine();
                             System.Console.WriteLine("|==Entered EmployeeId is already there give proper Id.==|");
                         }
                         else
                         {
                             employeeId = enteredEmployeeId;
                             break;
-
                         }
+
                     }
                     else
                     {
@@ -186,9 +196,10 @@ namespace PPM.UiConsole
                         System.Console.Write("Enter the  employee roleId: ");
                         roleId = int.Parse(System.Console.ReadLine());
 
-                        bool roleExist = RolesRepo.rolesList.Any(p => p.RoleId == roleId);
+                        RolesRepo rolesRepo = new RolesRepo();
+                        var roleExist = rolesRepo.ViewById(roleId);
 
-                        if (roleExist == false)
+                        if (roleExist.RoleId != roleId)
                         {
                             System.Console.WriteLine("|==Entered RoleId is not found  give proper Id==|");
 
@@ -241,14 +252,14 @@ namespace PPM.UiConsole
 
         public void ViewEmployee()
         {
-
-
-            if (EmployeeRepo.employeeList.Count == 0)
+            if (!employeeDal.EmployeeExist())
             {
-                System.Console.WriteLine("|==There are no employees in the list first add employees.==|");
+                System.Console.WriteLine("|==There are no employees in the list.==|");
                 return;
             }
 
+
+            EmployeeDal.employeeList.Clear();
 
             System.Console.WriteLine("*********************************             The Employees are  listed below                ***********************");
             System.Console.WriteLine();
@@ -266,14 +277,11 @@ namespace PPM.UiConsole
         public void ViewEmployeeById()
         {
 
-
-            if (EmployeeRepo.employeeList.Count == 0)
+            if (!employeeDal.EmployeeExist())
             {
-                System.Console.WriteLine("|==There are no employees in the list first add employees.==|");
+                System.Console.WriteLine("|==There are no employees in the list.==|");
                 return;
             }
-
-
             try
             {
 
@@ -282,7 +290,7 @@ namespace PPM.UiConsole
 
                 Employee employee = employeeRepo.ViewById(employeeById);
 
-                if (employee != null)
+                if (employee.EmployeeId == employeeById)
                 {
 
                     System.Console.WriteLine();
@@ -303,54 +311,44 @@ namespace PPM.UiConsole
 
         public void DeleteEmployee()
         {
-            System.Console.WriteLine();
 
-            if (EmployeeRepo.employeeList.Count == 0)
+
+            if (!employeeDal.EmployeeExist())
             {
-                System.Console.WriteLine("|==There are no employees in the list first add employees.==|");
+                System.Console.WriteLine("|==There are no employees in the list.==|");
                 return;
             }
 
-            System.Console.WriteLine("The employees in the list: ");
-            foreach (var employee in EmployeeRepo.employeeList)
-            {
-                System.Console.WriteLine($"EmployeeId : {employee.EmployeeId}, EmployeeFirstName : {employee.EmployeeFirstName}, EmployeeLastName : {employee.EmployeeLastName}, Email : {employee.Email}, MobileNumber : {employee.MobileNumber}, Address : {employee.Address}, RoleId : {employee.RoleId}");
-            }
+            ViewEmployee();
 
 
             try
             {
 
-                int initialCount = EmployeeRepo.employeeList.Count;
-
-                
                 System.Console.WriteLine();
                 System.Console.Write("Enter the employeeId that you want delete: ");
                 int employeeIdToDelete = int.Parse(System.Console.ReadLine());
 
-                bool employeeExist = EmployeeProjectRepo.projectEmployeeMember.Any(P => P.EmployeeId == employeeIdToDelete);
-                if (employeeExist)
+                bool deleteEmployeeExist = employeeDal.EmployeeDalExist(employeeIdToDelete);
+
+                if (deleteEmployeeExist)
                 {
-                    System.Console.WriteLine("|==This employee is working in project==|");
+                    System.Console.WriteLine("No employee with the specified ID found.");
+                    return;
+
+                }
+                
+
+                bool empProjectExist = employeeDal.EmpProjectExist(employeeIdToDelete);
+
+                if (!empProjectExist)
+                {
+                    System.Console.WriteLine("|==The employee is assign to project.==|");
                 }
                 else
                 {
-
                     employeeRepo.Delete(employeeIdToDelete);
-
-                    int finalCount = EmployeeRepo.employeeList.Count;
-
-                    if (finalCount < initialCount)
-                    {
-                        System.Console.WriteLine();
-                        System.Console.ForegroundColor = ConsoleColor.Red;
-                        System.Console.WriteLine("Employee deleted successfully.");
-                        System.Console.ResetColor();
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("|==No employee with the specified ID found.==|");
-                    }
+                    System.Console.WriteLine("Employee Deleted Successfully ...");
                 }
 
             }
@@ -360,6 +358,10 @@ namespace PPM.UiConsole
             }
 
         }
+
+
+
+
 
     }
 

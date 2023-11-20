@@ -1,6 +1,8 @@
 using System;
+using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Security.Cryptography.X509Certificates;
+using PPM.Dal;
 using PPM.Domain;
 using PPM.Model;
 
@@ -11,12 +13,16 @@ namespace PPM.UiConsole
     public class RoleConsole
     {
 
+
+
+
+        RoleDal roleDal = new RoleDal();
         RolesRepo rolesRepo = new RolesRepo();
         public int RoleModule()
         {
 
 
-            
+            // Console.Clear();
             System.Console.WriteLine();
 
             System.Console.ForegroundColor = ConsoleColor.Green;
@@ -67,6 +73,7 @@ namespace PPM.UiConsole
                 string roleName;
 
 
+
                 System.Console.WriteLine();
 
                 while (true)
@@ -74,14 +81,13 @@ namespace PPM.UiConsole
 
 
                     System.Console.WriteLine();
+
                     System.Console.Write("Enter the RoleId: ");
-                    // int enteredRoleId = int.Parse(System.Console.ReadLine());
                     if (int.TryParse(System.Console.ReadLine(), out int enteredRoleId))
                     {
 
-                        bool roleExist = RolesRepo.rolesList.Any(p => p.RoleId == enteredRoleId);
-
-                        if (roleExist)
+                        bool roleExist = roleDal.RoleDalExist(enteredRoleId);
+                        if (!roleExist)
                         {
                             System.Console.WriteLine();
                             System.Console.WriteLine("|==Entered RoleId is already there give proper Id.==|");
@@ -90,15 +96,18 @@ namespace PPM.UiConsole
                         {
                             roleId = enteredRoleId;
                             break;
-
                         }
+
                     }
                     else
                     {
-                        System.Console.WriteLine();
                         System.Console.WriteLine("|==Invalid input. Please enter a valid integer for the project ID.==|");
                     }
+
                 }
+
+
+
 
                 System.Console.Write("Enter rolename: ");
                 roleName = System.Console.ReadLine();
@@ -130,12 +139,14 @@ namespace PPM.UiConsole
         public void ViewRoles()
         {
 
-            if (RolesRepo.rolesList.Count == 0)
+            if (!roleDal.RolesExist())
             {
-                System.Console.WriteLine("|==There are no roles in the list first add roles.==|");
+                System.Console.WriteLine("|==There are no roles in the list.==|");
                 return;
             }
 
+
+            RoleDal.rolesList.Clear();
             System.Console.WriteLine("*********************************    The Roles are  listed below   ***********************");
             System.Console.WriteLine();
 
@@ -151,28 +162,28 @@ namespace PPM.UiConsole
 
         public void ViewRoleById()
         {
+            System.Console.WriteLine();
 
-            if (RolesRepo.rolesList.Count == 0)
+            if (!roleDal.RolesExist())
             {
-                System.Console.WriteLine("|==There are no roles in the list first add roles.==|");
+                System.Console.WriteLine("|==There are no roles in the list.==|");
                 return;
             }
+
 
             try
             {
 
-
-                System.Console.WriteLine();
-                System.Console.Write("Enter the roleId ");
+                System.Console.Write("Enter the roleId : ");
                 int roleById = int.Parse(System.Console.ReadLine());
 
                 Role role = rolesRepo.ViewById(roleById);
 
-                if (role != null)
+                if (role.RoleId == roleById)
                 {
 
-                    System.Console.WriteLine("The Roles are:");
                     System.Console.WriteLine();
+                    System.Console.WriteLine("The Roles are:");
                     System.Console.WriteLine($"RoleId : {role.RoleId}, RoleName : {role.RoleName}");
                 }
                 else
@@ -181,9 +192,9 @@ namespace PPM.UiConsole
                     System.Console.WriteLine("|==role does not exist.==|");
                 }
             }
-            catch (Exception exp)
+            catch (Exception ex)
             {
-                System.Console.WriteLine(exp.Message);
+                System.Console.WriteLine(ex.Message);
             }
         }
 
@@ -191,65 +202,56 @@ namespace PPM.UiConsole
 
         public void DeleteRole()
         {
-            if (RolesRepo.rolesList.Count == 0)
+
+            if (!roleDal.RolesExist())
             {
-                System.Console.WriteLine();
-                System.Console.WriteLine("|==There are no roles in the list first add roles.==|");
+                System.Console.WriteLine("|==There are no roles in the list.==|");
                 return;
             }
 
+            RoleDal.rolesList.Clear();
             System.Console.WriteLine();
-            System.Console.Write("The aviailabel roles are:");
-            foreach (var role in RolesRepo.rolesList)
-            {
-                System.Console.WriteLine($"RoleId : {role.RoleId}, RoleName : {role.RoleName}");
-            }
+            System.Console.WriteLine();
 
-
+            ViewRoles();
             try
             {
 
-
-                int initialCount = RolesRepo.rolesList.Count;
-
-                // Use RemoveAll to remove all projects with the specified projectId
                 System.Console.WriteLine();
-                System.Console.Write("Enter the roleId that you want delete : ");
+                System.Console.Write("Enter the roleId that you want delete: ");
                 int roleIdToDelete = int.Parse(System.Console.ReadLine());
 
-                bool roleExist = EmployeeProjectRepo.projectEmployeeMember.Any(P => P.RoleId == roleIdToDelete);
-                if (roleExist)
+                bool roleDelete = roleDal.RoleDalExist(roleIdToDelete);
+
+                if (roleDelete)
                 {
-                    System.Console.WriteLine();
-                    System.Console.WriteLine("|==The role currently used in project.==|");
+                    System.Console.WriteLine("No role with the specified ID found.");
+                    return;
+                }
+
+
+
+                bool empRoleExist = roleDal.RoleDelete(roleIdToDelete);
+
+                if (!empRoleExist)
+                {
+                    System.Console.WriteLine("|==The role is assign to employee.==|");
+                    return;
                 }
                 else
                 {
-
                     rolesRepo.Delete(roleIdToDelete);
-
-                    int finalCount = RolesRepo.rolesList.Count;
-
-                    if (finalCount < initialCount)
-                    {
-                        System.Console.WriteLine();
-                        System.Console.ForegroundColor = ConsoleColor.Red;
-                        System.Console.WriteLine("Role deleted successfully.");
-                        System.Console.ResetColor();
-
-                    }
-                    else
-                    {
-                        System.Console.WriteLine();
-                        System.Console.WriteLine("|==No role with the specified ID found.==|");
-                    }
+                    System.Console.WriteLine("Role Deleted Successfully ...");
                 }
             }
-            catch( Exception exp)
+            catch (Exception exp)
             {
                 System.Console.WriteLine(exp.Message);
             }
+
         }
+
+
 
     }
 

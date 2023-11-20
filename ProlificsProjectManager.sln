@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPM.UiConsole", "PPM.UiCons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject2", "TestProject2\TestProject2.csproj", "{56E0AF85-6616-469F-A47A-90DF4ADDBAFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPM.Dal", "PPM.Dal\PPM.Dal.csproj", "{E350F63E-A7FC-46A4-8CE7-0AE619FD232B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,5 +48,13 @@ Global
 		{56E0AF85-6616-469F-A47A-90DF4ADDBAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E0AF85-6616-469F-A47A-90DF4ADDBAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56E0AF85-6616-469F-A47A-90DF4ADDBAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A26C3DF-27E5-452C-A57B-77621BC63A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A26C3DF-27E5-452C-A57B-77621BC63A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A26C3DF-27E5-452C-A57B-77621BC63A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A26C3DF-27E5-452C-A57B-77621BC63A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E350F63E-A7FC-46A4-8CE7-0AE619FD232B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E350F63E-A7FC-46A4-8CE7-0AE619FD232B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E350F63E-A7FC-46A4-8CE7-0AE619FD232B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E350F63E-A7FC-46A4-8CE7-0AE619FD232B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

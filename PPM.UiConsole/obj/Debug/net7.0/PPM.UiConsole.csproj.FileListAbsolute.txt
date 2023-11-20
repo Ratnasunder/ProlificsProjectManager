@@ -49,3 +49,5 @@ C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\P
 C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\refint\PPM.UiConsole.dll
 C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.pdb
 C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\ref\PPM.UiConsole.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Dal.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Dal.pdb

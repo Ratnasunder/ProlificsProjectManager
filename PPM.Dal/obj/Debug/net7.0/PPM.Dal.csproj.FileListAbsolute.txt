@@ -1,0 +1,15 @@
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\bin\Debug\net7.0\PPM.Dal.deps.json
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\bin\Debug\net7.0\PPM.Dal.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\bin\Debug\net7.0\PPM.Dal.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.csproj.AssemblyReference.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.AssemblyInfoInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.AssemblyInfo.cs
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.csproj.CoreCompileInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.csproj.CopyComplete
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\refint\PPM.Dal.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\PPM.Dal.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Dal\obj\Debug\net7.0\ref\PPM.Dal.dll

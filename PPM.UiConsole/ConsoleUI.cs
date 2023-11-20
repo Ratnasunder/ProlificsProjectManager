@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Security.Cryptography.X509Certificates;
+using PPM.Dal;
 using PPM.Domain;
 
 
@@ -13,8 +14,8 @@ namespace PPM.UiConsole
         public int Menu()
         {
 
-
-            
+          
+           
             System.Console.WriteLine();
 
 
@@ -78,7 +79,7 @@ namespace PPM.UiConsole
             string rolePath = "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.Xml\\RoleData.xml";
             string employeeProjectPath = "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.Xml\\EmployeeProjectData.xml";
 
-            AppDataSerializer.SerializeData(ProjectRepo.projectList, EmployeeRepo.employeeList, RolesRepo.rolesList, EmployeeProjectRepo.projectEmployeeMember, projectPath, employeePath, rolePath, employeeProjectPath);
+            AppDataSerializer.SerializeData(ProjectDal.projectList, EmployeeDal.employeeList, RoleDal.rolesList, EmployeeProjectDal.projectEmployeeMember, projectPath, employeePath, rolePath, employeeProjectPath);
             Console.WriteLine("Application data saved successfully.");
         }
     }

@@ -1,35 +1,38 @@
 using PPM.Model;
+using PPM.Dal;
 
 namespace PPM.Domain
 {
     public class ProjectRepo :  IEntityOperation<Project>
     {
         
-        public static List<Project> projectList = new List<Project>();
+        
+           ProjectDal projectDal = new ProjectDal();
         public void Add(Project project)
         {
            
 
-            projectList.Add(project);
+           projectDal.AddProjectDal(project);
 
         }
 
 
         public List<Project> Get()
         {
+            var projectList = projectDal.GetProjectsDal();
             return projectList;
         }
 
 
         public Project ViewById(int id)
         {
-            var viewProjectById = projectList.FirstOrDefault(p => p.ProjectId == id);
+            var viewProjectById = projectDal.ViewProjectByIdDal(id);
             return viewProjectById;
         }
 
         public void Delete(int deleteid)
         {
-            projectList.RemoveAll(item => item.ProjectId == deleteid);
+           projectDal.DeleteProjectDal(deleteid);
         }
 
 

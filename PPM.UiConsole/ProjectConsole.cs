@@ -1,5 +1,7 @@
+using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Security.Cryptography.X509Certificates;
+using PPM.Dal;
 using PPM.Domain;
 using PPM.Model;
 
@@ -11,12 +13,16 @@ namespace PPM.UiConsole
     {
 
         ProjectRepo projectRepo = new ProjectRepo();
+        ProjectDal projectDal = new ProjectDal();
+        EmployeeDal employeeDal = new EmployeeDal();
+
+
 
         public int ProjectModule()
         {
 
 
-            
+
             System.Console.WriteLine();
 
 
@@ -73,10 +79,11 @@ namespace PPM.UiConsole
                 System.Console.Write("Enter the projectId:");
                 if (int.TryParse(System.Console.ReadLine(), out int enteredProjectId))
                 {
-                    bool projectExist = ProjectRepo.projectList.Any(p => p.ProjectId == enteredProjectId);
-                    if (projectExist)
+
+                    bool exist = projectDal.ProjectDalExist(enteredProjectId);
+                    if (!exist)
                     {
-                        System.Console.WriteLine();
+
                         System.Console.WriteLine("|-- Entered projectId is already there give proper Id --|");
                     }
                     else
@@ -171,12 +178,12 @@ namespace PPM.UiConsole
 
             if (empToProject == "yes" || empToProject == "YES" || empToProject == "Yes")
             {
-                if (EmployeeRepo.employeeList.Count == 0)
+                if (!employeeDal.EmployeeExist())
                 {
-                    System.Console.WriteLine();
-                    System.Console.WriteLine("|==There are no employee in the list==|");
+                    System.Console.WriteLine("|==There are no employees in the list.==|");
                     return;
                 }
+
                 else
                 {
 
@@ -202,7 +209,17 @@ namespace PPM.UiConsole
 
         public void ViewProject()
         {
-            
+
+            if (!projectDal.ProjectExist())
+            {
+                System.Console.WriteLine("|==There are no project in the list.==|");
+                return;
+            }
+
+
+
+            ProjectDal.projectList.Clear();
+            ProjectRepo projectRepo = new ProjectRepo();
 
             System.Console.WriteLine("********************* The Project Are ***************************");
             System.Console.WriteLine();
@@ -218,91 +235,87 @@ namespace PPM.UiConsole
 
         public void ViewByProjectId()
         {
-            NoProject();
 
-            System.Console.Write("Enter the projectId : ");
-            int projetById = int.Parse(System.Console.ReadLine());
-
-            Project project = projectRepo.ViewById(projetById);
-
-            if (project != null)
+            try
             {
 
-                System.Console.WriteLine();
-                System.Console.WriteLine($"ProjectId : {project.ProjectId}, ProjectName : {project.ProjectName}, Startsat : {project.StartDate}, EndDate : {project.EndDate}");
 
+                if (!projectDal.ProjectExist())
+                {
+                    System.Console.WriteLine("|==There are no project in the list.==|");
+                    return;
+                }
+                System.Console.WriteLine("Enter the projectId ");
+                int projetById = int.Parse(System.Console.ReadLine());
+
+                Project project = projectRepo.ViewById(projetById);
+
+                if (project.ProjectId == projetById)
+                {
+
+                    System.Console.WriteLine();
+                    System.Console.WriteLine($"ProjectId : {project.ProjectId}, ProjectName : {project.ProjectName}, Startsat : {project.StartDate}, EndDate : {project.EndDate}");
+                }
+                else
+                {
+                    System.Console.WriteLine("project does not exist");
+                }
             }
-            else
+            catch (Exception exp)
             {
-                System.Console.WriteLine();
-                System.Console.WriteLine("project does not exist");
+                System.Console.WriteLine(exp.Message);
             }
-
         }
+
 
         public void DeleteProject()
         {
 
-
-            NoProject();
-
             System.Console.WriteLine();
-            System.Console.WriteLine("The availabel projects are:");
-            foreach (var item in ProjectRepo.projectList)
+
+            if (!projectDal.ProjectExist())
             {
-                System.Console.WriteLine($"ProjectId : {item.ProjectId}, ProjectName : {item.ProjectName}, Startsate : {item.StartDate}, EndDate : {item.EndDate}");
-            }
-
-
-            try
-            {
-                int initialCount = ProjectRepo.projectList.Count;
-
-                System.Console.WriteLine();
-                System.Console.WriteLine("Enter the projectId that you want delete");
-                int projectIdToDelete = int.Parse(System.Console.ReadLine());
-
-                bool projectExist = EmployeeProjectRepo.projectEmployeeMember.Any(P => P.ProjectId == projectIdToDelete);
-                if (projectExist)
-                {
-                    System.Console.WriteLine("This project is on going  ");
-                }
-                else
-                {
-                    projectRepo.Delete(projectIdToDelete);
-
-                    int finalCount = ProjectRepo.projectList.Count;
-
-                    if (finalCount < initialCount)
-                    {
-                        System.Console.WriteLine();
-                        System.Console.ForegroundColor = ConsoleColor.Red;
-                        System.Console.WriteLine("Project deleted successfully.");
-                        System.Console.ResetColor();
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No project with the specified ID found.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-        }
-
-
-        public void NoProject()
-        {
-            if (ProjectRepo.projectList.Count == 0)
-            {
-                System.Console.WriteLine("There are no projects in the list first add projects");
+                System.Console.WriteLine("|==There are no project in the list.==|");
                 return;
             }
+            ViewProject();
+
+          try
+          {
+
+
+            System.Console.WriteLine();
+            System.Console.WriteLine("Enter the projectId that you want delete");
+            int projectIdToDelete = int.Parse(System.Console.ReadLine());
+
+
+
+            bool projectExist = projectDal.ProjectDalExist(projectIdToDelete);
+            if (projectExist)
+            {
+                System.Console.WriteLine("No project with the specified ID found.");
+                return;
+            }
+
+
+            bool projectEmployeeExist = projectDal.ProjectEmployeeExist(projectIdToDelete);
+            if (!projectEmployeeExist)
+            {
+                System.Console.WriteLine("This project is on going  ");
+            }
+            else
+            {
+                projectRepo.Delete(projectIdToDelete);
+                System.Console.WriteLine("Project Deleted Successfully ...");
+            }
+          }
+          catch(Exception exp)
+          {
+            System.Console.WriteLine(exp.Message);
+          }
+
         }
     }
-
 }
 
 

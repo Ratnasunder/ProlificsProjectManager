@@ -1,4 +1,5 @@
 using PPM.Model;
+using PPM.Dal;
 
 namespace PPM.Domain
 {
@@ -6,27 +7,29 @@ namespace PPM.Domain
     {
 
 
-        public static List<Employee> employeeList = new List<Employee>();
-
+       
+        EmployeeDal employeeDal = new EmployeeDal();
         public  void Add(Employee employee)
         {
+            employeeDal.AddEmployeeDal(employee);
         
-            employeeList.Add(employee);
+         
         }
         public List<Employee> Get()
         {
+            var employeeList = employeeDal.GetEmployeeDal();
             return employeeList;
         }
 
         public  Employee ViewById(int employeeId)
         {
-            var viewEmployeetById = employeeList.FirstOrDefault(p => p.EmployeeId == employeeId);
+           var viewEmployeetById = employeeDal.ViewByIdEmployee(employeeId);
             return viewEmployeetById;
         }
 
         public  void Delete(int deleteId)
         {
-            employeeList.RemoveAll(item => item.EmployeeId == deleteId);
+            employeeDal.DeleteEmployeetDal(deleteId);
         }
 
 

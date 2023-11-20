@@ -7,10 +7,9 @@ namespace PPM.Main
         public static void Main(string[] args)
         {
 
-            Console.Clear();
+            
             EmployeeProjectConsole empProjectObject = new EmployeeProjectConsole();
             ProjectConsole projectConsole = new ProjectConsole();
-            ProjectRepo projectRepo = new ProjectRepo();
             EmployeeConsole employeeConsole = new EmployeeConsole();
             RoleConsole roleConsole = new RoleConsole();
             ConsoleUI consoleUI = new ConsoleUI();

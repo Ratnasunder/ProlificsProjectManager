@@ -2,7 +2,9 @@ using System.Diagnostics.Contracts;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using PPM.Dal;
 using PPM.Domain;
+using PPM.Model;
 
 
 namespace PPM.UiConsole
@@ -11,11 +13,14 @@ namespace PPM.UiConsole
     public class EmployeeProjectConsole
     {
 
-        ProjectRepo projectRepo = new ProjectRepo();
+
         EmployeeProjectRepo employeeProjectRepo = new EmployeeProjectRepo();
         EmployeeConsole employeeConsole = new EmployeeConsole();
-        ProjectConsole projectConsole = new ProjectConsole();
-       
+        EmployeeProjectDal employeeProjectDal = new EmployeeProjectDal();
+        EmployeeDal employeeDal = new();
+
+        ProjectDal projectDal = new ProjectDal();
+
         string projectName;
         int employeeId;
         string employeeFirstName;
@@ -27,26 +32,12 @@ namespace PPM.UiConsole
 
             int addEmployeeId;
 
-            bool projectExist = ProjectRepo.projectList.Any(p => p.ProjectId == projectId);
-            if (!projectExist)
-            {
-                System.Console.WriteLine();
-                System.Console.WriteLine("|==Enter proper projectId==|");
-                return;
-            }
+            Project query = projectDal.ViewProjectByIdDal(projectId);
 
-
-            var query1 = from item in ProjectRepo.projectList
-                         where item.ProjectId == projectId
-                         select new { item.ProjectName };
-
-            foreach (var item in query1)
-            {
-                projectName = item.ProjectName;
-            }
-
+            projectName = query.ProjectName;
 
             employeeConsole.ViewEmployee();//for showing employee list         
+
             while (true)
             {
                 while (true)
@@ -61,8 +52,8 @@ namespace PPM.UiConsole
                         {
                             return;
                         }
-                        bool employeeExist = EmployeeRepo.employeeList.Any(p => p.EmployeeId == addEmployeeId);
-                        if (employeeExist)
+                        bool employeeExist = employeeDal.EmployeeDalExist(addEmployeeId);
+                        if (!employeeExist)
                         {
                             break;
                         }
@@ -80,24 +71,18 @@ namespace PPM.UiConsole
                 }
 
 
-                bool employeeProjectExist = EmployeeProjectRepo.projectEmployeeMember.Any(p => p.ProjectId == projectId && p.EmployeeId == addEmployeeId);
-                if (employeeProjectExist)
+                bool employeeProjectExist = employeeProjectDal.CheckEmpProject(projectId, addEmployeeId);
+                if (!employeeProjectExist)
                 {
                     System.Console.WriteLine("|==Enter employee already added to project==|");
                 }
                 else
                 {
-                    var query2 = from items in EmployeeRepo.employeeList
-                                 where items.EmployeeId == addEmployeeId
-                                 select new { items.EmployeeId, items.EmployeeFirstName, items.EmployeeLastName, items.RoleId };
-
-                    foreach (var item in query2)
-                    {
-                        employeeId = item.EmployeeId;
-                        employeeFirstName = item.EmployeeFirstName;
-                        employeeLastName = item.EmployeeLastName;
-                        roleId = item.RoleId;
-                    }
+                    Employee query2 = employeeDal.ViewByIdEmployee(addEmployeeId);
+                    employeeId = query2.EmployeeId;
+                    employeeFirstName = query2.EmployeeFirstName;
+                    employeeLastName = query2.EmployeeLastName;
+                    roleId = query2.RoleId;
                     break;
                 }
             }
@@ -116,20 +101,35 @@ namespace PPM.UiConsole
         public void AddEmployeeToProject()
         {
 
-
-             if (ProjectRepo.projectList.Count == 0)
+            if (!projectDal.ProjectExist())
             {
                 System.Console.WriteLine("There are no projects in the list first add projects");
                 return;
-            } 
+            }
 
+            if (!employeeDal.EmployeeExist())
+            {
+                System.Console.WriteLine("|==There are no employees in the list.==|");
+                return;
+            }
            
-           
+
+
             try
             {
 
-                System.Console.Write("Enter the projectId which you want add employee:");
+                ViewProjectDetails();
+                System.Console.Write("\n\n Enter the projectId which you want add employee:");
                 int userProjectId = int.Parse(System.Console.ReadLine());
+
+                bool projectExist = projectDal.ProjectDalExist(userProjectId);
+                if (projectExist == true)
+                {
+                    System.Console.WriteLine();
+                    System.Console.WriteLine("|==Enter proper projectId==|");
+                    return;
+                }
+
                 EmployeeProjectConsole employeeProject = new EmployeeProjectConsole();
                 employeeProject.EmployeeToProject(userProjectId);
             }
@@ -146,25 +146,34 @@ namespace PPM.UiConsole
             try
             {
 
-                System.Console.Write("Enter the projectId from that you want delete employee: ");
+
+                bool exist = employeeProjectDal.Exist();
+                if (!exist)
+                {
+                    System.Console.WriteLine("There are no employeproject details in the list");
+                    return;
+                }
+
+                ViewProjectDetails();
+                System.Console.Write("\n\nEnter the projectId from that you want delete employee: ");
                 int deleteProjectId = int.Parse(System.Console.ReadLine());
 
                 System.Console.Write("Enter the employeeId which you want delete from project: ");
                 int deleteEmployeId = int.Parse(System.Console.ReadLine());
 
-                bool employeeDeleted;
-                employeeProjectRepo.DeleteEmployeeFromProject(deleteProjectId, deleteEmployeId, out employeeDeleted);
 
-                if (employeeDeleted)
+
+                bool employeeProjectExist = employeeProjectDal.CheckEmpProject(deleteProjectId, deleteEmployeId);
+                if (employeeProjectExist)
                 {
-                    System.Console.ForegroundColor = ConsoleColor.Red;
-                    System.Console.WriteLine("|==Employee removed from the project.==|");
-                    Console.ResetColor();
+                    System.Console.WriteLine("No project and employee with the specified ID found.");
+                    return;
                 }
-                else
-                {
-                    System.Console.WriteLine("|==Employee or Project not found.==|");
-                }
+
+
+                employeeProjectRepo.DeleteEmployeeFromProject(deleteProjectId, deleteEmployeId);
+                System.Console.WriteLine("Project Deleted Successfully ...");
+
             }
             catch (Exception exp)
             {
@@ -177,10 +186,23 @@ namespace PPM.UiConsole
 
         public void ViewProjectDetails()
         {
+
+
+            EmployeeProjectDal.projectEmployeeMember.Clear();
+            bool exist = employeeProjectDal.Exist();
+            if (!exist)
+            {
+                System.Console.WriteLine("There are no employeproject details in the list");
+                return;
+            }
+
+
+
+            var empProjects = employeeProjectRepo.GetEmployeeProjects();
             System.Console.WriteLine("*********************          The Projects With Emloyees Details          ***************************");
             System.Console.WriteLine();
 
-            foreach (var item in EmployeeProjectRepo.projectEmployeeMember)
+            foreach (var item in empProjects)
             {
                 System.Console.WriteLine($"ProjectId : {item.ProjectId}, ProjectName : {item.ProjectName}, EmployeeId: {item.EmployeeId},  EmployeeFirstName : {item.EmployeeFirstName}, EmployeeLastName : {item.EmployeeLastName}, RoleId : {item.RoleId} ");
             }

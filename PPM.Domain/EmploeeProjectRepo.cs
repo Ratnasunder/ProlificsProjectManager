@@ -1,3 +1,4 @@
+using PPM.Dal;
 using PPM.Model;
 
 
@@ -5,7 +6,9 @@ namespace PPM.Domain
 {
     public class EmployeeProjectRepo : IEmployeeProject
     {
-        public static List<EmployeeProject> projectEmployeeMember = new List<EmployeeProject>();
+     
+
+        EmployeeProjectDal employeeProjectDal = new EmployeeProjectDal();
 
 
         public  void EmployeeToProject(int projectId, string projectName,  int employeeId, string employeeFirstName, string employeeLastName, int roleId)
@@ -20,31 +23,23 @@ namespace PPM.Domain
                 RoleId = roleId
             };
 
-            projectEmployeeMember.Add(employeeProjectObject);
+            employeeProjectDal.AddEmployeeProjectDal(employeeProjectObject);
         }
 
 
 
 
 
-        public  void DeleteEmployeeFromProject(int projectId, int employeeId, out bool employeeDeleted)
+        public  void DeleteEmployeeFromProject(int projectId, int employeeId)
         {
-            int indexToRemove = projectEmployeeMember.FindIndex(item => item.ProjectId == projectId && item.EmployeeId == employeeId);
-            if (indexToRemove >= 0)
-            {
-                projectEmployeeMember.RemoveAt(indexToRemove);
-                employeeDeleted = true;
-            }
-            else
-            {
-                employeeDeleted = false;
-            }
+           employeeProjectDal.DeleteEmployeeProjectDal(projectId, employeeId);
         }
 
 
 
         public  List<EmployeeProject> GetEmployeeProjects()
         {
+            var projectEmployeeMember = employeeProjectDal.GetEmployeeProjectsDal();
             return projectEmployeeMember;
         }
 
