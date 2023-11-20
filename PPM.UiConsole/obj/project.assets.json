@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "PPM.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "PPM.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PPM.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PPM.Domain.dll": {}
+        }
+      },
+      "PPM.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/PPM.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PPM.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PPM.Domain/1.0.0": {
+      "type": "project",
+      "path": "../PPM.Domain/PPM.Domain.csproj",
+      "msbuildProject": "../PPM.Domain/PPM.Domain.csproj"
+    },
+    "PPM.Model/1.0.0": {
+      "type": "project",
+      "path": "../PPM.Model/PPM.Model.csproj",
+      "msbuildProject": "../PPM.Model/PPM.Model.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "PPM.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\RaDasari\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.UiConsole\\PPM.UiConsole.csproj",
+      "projectName": "PPM.UiConsole",
+      "projectPath": "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.UiConsole\\PPM.UiConsole.csproj",
+      "packagesPath": "C:\\Users\\RaDasari\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.UiConsole\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\RaDasari\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.Domain\\PPM.Domain.csproj": {
+              "projectPath": "C:\\Users\\RaDasari\\Desktop\\ProlificsProjectManager\\PPM.Domain\\PPM.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

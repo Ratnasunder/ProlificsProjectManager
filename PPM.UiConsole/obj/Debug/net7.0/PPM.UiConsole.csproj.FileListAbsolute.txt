@@ -1,0 +1,51 @@
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.AssemblyReference.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfoInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfo.cs
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CoreCompileInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.deps.json
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CopyComplete
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\refint\PPM.UiConsole.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\ref\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.deps.json
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.AssemblyReference.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfoInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfo.cs
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CoreCompileInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CopyComplete
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\refint\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.UiConsole\obj\Debug\net7.0\ref\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.deps.json
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Domain.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.AssemblyReference.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfoInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.AssemblyInfo.cs
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CoreCompileInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.csproj.CopyComplete
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\refint\PPM.UiConsole.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\PPM.UiConsole.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.UiConsole\obj\Debug\net7.0\ref\PPM.UiConsole.dll

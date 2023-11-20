@@ -1,0 +1,36 @@
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.deps.json
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.AssemblyReference.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfoInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfo.cs
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.CoreCompileInputs.cache
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\refint\PPM.Model.dll
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.pdb
+C:\Users\RaDasari\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\bin\Debug\net7.0\PPM.Model.deps.json
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.AssemblyReference.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfoInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfo.cs
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.CoreCompileInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\refint\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager (1)\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.deps.json
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\bin\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.AssemblyReference.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfoInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.AssemblyInfo.cs
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.csproj.CoreCompileInputs.cache
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\refint\PPM.Model.dll
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\PPM.Model.pdb
+C:\Users\Sunder\Desktop\ProlificsProjectManager\PPM.Model\obj\Debug\net7.0\ref\PPM.Model.dll
